@@ -1,3 +1,79 @@
+// ===== CUSTOM CURSOR =====
+const cursor = document.getElementById("cursor");
+const cursorLabel = document.getElementById("cursor-label");
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// Smooth cursor follow with RAF
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * 0.12;
+  cursorY += (mouseY - cursorY) * 0.12;
+  cursor.style.transform = `translate(${cursorX - cursor.offsetWidth/2}px, ${cursorY - cursor.offsetHeight/2}px)`;
+  cursorLabel.style.transform = `translate(${cursorX}px, ${cursorY + 36}px)`;
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Cursor state changes
+document.querySelectorAll("a, button, select, input, textarea").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    cursor.classList.add("hover-link");
+  });
+  el.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hover-link", "hover-btn");
+  });
+});
+
+document.querySelectorAll(".mag-btn").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    cursor.classList.remove("hover-link");
+    cursor.classList.add("hover-btn");
+    cursorLabel.textContent = "Click";
+    cursorLabel.classList.add("visible");
+  });
+  el.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hover-btn");
+    cursorLabel.classList.remove("visible");
+  });
+});
+
+document.querySelectorAll(".img-hover-wrap").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    cursor.classList.remove("hover-link");
+    cursor.classList.add("hover-img");
+    el.classList.add("focused");
+    cursorLabel.textContent = "View";
+    cursorLabel.classList.add("visible");
+  });
+  el.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hover-img");
+    el.classList.remove("focused");
+    cursorLabel.classList.remove("visible");
+  });
+});
+
+// ===== MAGNETIC BUTTON =====
+document.querySelectorAll(".mag-btn").forEach(btn => {
+  btn.addEventListener("mousemove", (e) => {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.28;
+    const dy = (e.clientY - cy) * 0.28;
+    btn.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+  btn.addEventListener("mouseleave", () => {
+    btn.style.transform = "translate(0,0)";
+  });
+});
+
+// ===== LINE REVEAL =====
+document.querySelectorAll(".line-reveal").forEach(el => io.observe(el));
 function listingCard(item){
   const div = document.createElement("article");
   div.className = "listing-card reveal overflow-hidden group cursor-pointer";

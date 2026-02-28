@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body class="bg-[#F5F2ED] text-[#1a1a1a] antialiased">
+<div id="cursor"></div>
+<div id="cursor-label"></div>
 
   <div id="scrollProgress" class="fixed top-0 left-0 h-[2px] bg-[#1a1a1a] z-[60] w-0 transition-all"></div>
 
@@ -51,9 +53,13 @@
         <div class="absolute inset-0 bg-black/35"></div>
         <div class="relative h-full flex flex-col justify-end px-8 md:px-16 pb-16 max-w-7xl mx-auto">
           <p class="reveal text-white/70 text-xs uppercase tracking-[0.3em] mb-4">Agen Properti • Jakarta & Tangerang</p>
-          <h1 class="reveal font-garamond text-white text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-4xl">
-            Moving boldly forward with strength, agility and precision.
-          </h1>
+         <h1 class="reveal font-garamond text-white text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-4xl">
+  Moving boldly forward with
+  <span class="text-outline-white">strength,</span>
+  agility and
+  <span class="text-outline-white italic">precision.</span>
+</h1>
+
           <div class="reveal mt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
             <a href="#listings" class="bg-white text-[#1a1a1a] px-6 py-3 text-sm hover:bg-white/90 transition rounded-none">
               Explore Properties
@@ -190,9 +196,14 @@
     <section class="mx-auto max-w-7xl px-6 md:px-16 py-24 md:py-32 text-center">
       <div class="reveal max-w-4xl mx-auto">
         <p class="text-xs uppercase tracking-[0.3em] text-[#1a1a1a]/50 mb-8">Our Promise</p>
-        <p class="font-garamond text-3xl md:text-5xl lg:text-6xl leading-tight text-[#1a1a1a]">
-          WaveStone crafts exceptional environments, forges strong relationships and creates enduring value for each and every partner.
-        </p>
+        <p class="font-garamond text-3xl md:text-5xl lg:text-6xl leading-tight">
+  WaveStone crafts
+  <span class="text-outline">exceptional</span>
+  environments, forges strong relationships and creates
+  <span class="text-outline">enduring value</span>
+  for each and every partner.
+</p>
+
       </div>
     </section>
 
