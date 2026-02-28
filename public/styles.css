@@ -1,0 +1,34 @@
+:root{
+  --accent: 255, 255, 255;
+}
+
+* { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+.heroGlow{
+  background:
+    radial-gradient(800px 400px at 20% 10%, rgba(var(--accent),0.14), transparent 55%),
+    radial-gradient(500px 300px at 80% 20%, rgba(255,255,255,0.08), transparent 55%),
+    linear-gradient(to top, rgba(0,0,0,0.75), transparent 60%);
+  transition: opacity .4s ease;
+}
+
+.reveal{
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal.is-visible{ transition: none; transform: none; opacity: 1; }
+}
+
+/* Small mobile tweaks (extra safety beyond Tailwind) */
+@media (max-width: 380px){
+  h1 { letter-spacing: -0.01em; }
+}
