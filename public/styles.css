@@ -1,34 +1,29 @@
-:root{
-  --accent: 255, 255, 255;
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+.font-garamond,
+h1, h2, h3, .font-garamond * {
+  font-family: 'EB Garamond', Georgia, serif;
 }
 
-* { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+body { font-family: 'Inter', system-ui, sans-serif; }
 
-.heroGlow{
-  background:
-    radial-gradient(800px 400px at 20% 10%, rgba(var(--accent),0.14), transparent 55%),
-    radial-gradient(500px 300px at 80% 20%, rgba(255,255,255,0.08), transparent 55%),
-    linear-gradient(to top, rgba(0,0,0,0.75), transparent 60%);
-  transition: opacity .4s ease;
-}
-
-.reveal{
+.reveal {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(16px);
 }
-
-.reveal.is-visible{
+.reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity .7s ease, transform .7s ease;
+  transition: opacity .8s ease, transform .8s ease;
 }
 
-/* Reduced motion accessibility */
-@media (prefers-reduced-motion: reduce){
-  .reveal, .reveal.is-visible{ transition: none; transform: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.is-visible { transition: none; transform: none; opacity: 1; }
 }
 
-/* Small mobile tweaks (extra safety beyond Tailwind) */
-@media (max-width: 380px){
-  h1 { letter-spacing: -0.01em; }
-}
+/* Listing card image zoom on hover */
+.listing-img { transition: transform .6s ease; }
+.listing-card:hover .listing-img { transform: scale(1.03); }
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
